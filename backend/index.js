@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 
 const app = express();
+let counter = 0;
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -10,13 +11,14 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/", function (req, res) {
-  console.log("Post clicked again", req.body);
-  res.send("POST Request received!\n");
+  counter++;
+  console.log(`${counter}`);
+  res.send(`${counter}`);
 });
 
 app.get("/", function (req, res) {
   console.log("GET clicked again");
-  res.send(req.body);
+  res.send(`${counter}`);
 });
 
 const callback = () => {

@@ -5,12 +5,9 @@ function App() {
   const [state, setState] = useState(0);
 
   function postHandle() {
-    setState(state + 1);
     const url = "http://localhost:3012/";
-    const data = { number: state };
     const option = {
       method: "POST",
-      body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     };
     fetch(url, option);
@@ -18,15 +15,9 @@ function App() {
 
   function getHandle() {
     const url = "http://localhost:3012/";
-    const data = { number: state };
-    const option = {
-      method: "GET",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    };
-    fetch(url, option)
+    fetch(url)
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => setState(result));
   }
 
   return (
