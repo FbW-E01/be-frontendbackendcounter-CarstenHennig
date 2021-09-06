@@ -1,0 +1,7 @@
+POST http://localhost:3012/
+content-type: application/json
+
+{
+    "message": "Hello from the other side",
+    "name": "Youd Backend Ghost"
+}
